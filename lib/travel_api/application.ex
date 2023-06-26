@@ -8,8 +8,7 @@ defmodule TravelApi.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      # Starts a worker by calling: TravelApi.Worker.start_link(arg)
-      # {TravelApi.Worker, arg}
+      {Plug.Cowboy, scheme: :http, plug: TravelApi.Router, options: [port: 8080]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
