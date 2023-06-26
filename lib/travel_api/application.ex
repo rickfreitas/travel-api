@@ -8,7 +8,11 @@ defmodule TravelApi.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      {Plug.Cowboy, scheme: :http, plug: TravelApi.Router, options: [port: 8080]}
+      {
+        Plug.Cowboy,
+        scheme: :http,
+        plug: TravelApi.Router,
+        options: [port: Application.get_env(:travel_api, :port)]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
